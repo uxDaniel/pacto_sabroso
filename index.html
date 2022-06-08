@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pacto Sabroso - Generador por Daniel Garcia</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <!-- link rel="icon" href="img/favicon.png" -->
+  <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+  <style>
+    /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+      html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        /*font-weight: normal;*/
+      }
+      ul {
+        list-style: none;
+      }
+      button, input, select {
+        margin: 0;
+      }
+      html {
+        box-sizing: border-box;
+      }
+      *, *::before, *::after {
+        box-sizing: inherit;
+      }
+      img, video {
+        height: auto;
+        max-width: 100%;
+      }
+      iframe {
+        border: 0;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      td, th {
+        padding: 0;
+      }
+  </style>
+  <style>
+    @import url('http://fonts.cdnfonts.com/css/gotham');
+    /*
+      font-family: 'Gotham', sans-serif;
+      font-family: 'Gotham Black', sans-serif;
+      font-family: 'Gotham Light', sans-serif;
+      font-family: 'Gotham Thin', sans-serif;
+      font-family: 'Gotham XLight', sans-serif;
+      font-family: 'Gotham Book', sans-serif;
+      font-family: 'Gotham Ultra', sans-serif;
+    */
+    :root {
+      --orange: #faa61a;
+      --indigo: #034ea2;
+      --red: #ee2524;
+      --green: #34ab49;
+      --plum: #903092;
+    }
+    body {
+      font-family: 'Gotham Black', sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 1em;
+      font-size: 4rem;
+    }
+    h2 {
+      margin-bottom: 1em;
+      font-size: 2rem;
+    }
+    h3 {
+      margin-top: 6rem;
+      font-size: 8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.15em;
+    }
+    .char {
+      mix-blend-mode: hard-light;
+      position: relative;
+    }
+    .char:nth-child(1) {
+      color: var(--orange);
+      z-index: 100;
+    }
+    .char:nth-child(2) {
+      color: var(--indigo);
+      z-index: 95;
+    }
+    .char:nth-child(3) {
+      color: var(--red);
+      z-index: 90;
+    }
+    .char:nth-child(4) {
+      color: var(--green);
+      z-index: 85;
+    }
+    .char:nth-child(5) {
+      color: var(--plum);
+      z-index: 80;
+    }
+    .char:nth-child(6) {
+      color: var(--orange);
+      z-index: 75;
+    }
+    .char:nth-child(7) {
+      color: var(--indigo);
+      z-index: 70;
+    }
+    .char:nth-child(8) {
+      color: var(--red);
+      z-index: 65;
+    }
+    .char:nth-child(9) {
+      color: var(--green);
+      z-index: 60;
+    }
+    .char:nth-child(10) {
+      color: var(--plum);
+      z-index: 55;
+    }
+    .char:nth-child(11) {
+      color: var(--orange);
+      z-index: 50;
+    }
+    .logo {
+      height: 14rem;
+    }
+    .pajarito {
+      height: 7rem;
+      position: absolute;
+      margin-top: -2.5rem;
+      margin-left: -2rem;
+      z-index: 45;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pacto Sabroso</h1>
+  <h2>Genera tu nombre para vivir sabroso</h2>
+
+  <hr>
+  <h3 contenteditable="true" data-splitting>
+    pontunombre
+    <img class="pajarito" src="img/pajarito.svg">
+  </h3>
+  <p style="font-size: 2rem; color: var(--orange);">QUIERE VIVIR SABROSO</p>
+
+  <img class="logo" src="img/pacto_historico_colombia_puede.svg">
+  <hr>
+  <br>
+  <p>Luego toma un pantallazo y listo!</p>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      Splitting();
+      /*
+      $("h3").on("focusout", function(){
+        console.log("cambio");
+        var text = $(this).text();
+        $(this)
+          .html(text)
+          .removeAttr("class")
+          .removeAttr("style")
+        ;
+        Splitting({
+            target: "h3",
+            by: "chars",
+            key: null
+        });
+      });
+      */
+    });
+  </script>
+</body>
+</html>
