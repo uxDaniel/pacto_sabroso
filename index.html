@@ -3,10 +3,9 @@
 <head>
   <title>Pacto Sabroso - Generador por Daniel Garcia</title>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1024">
+  <meta name="viewport" content="width=1280">
   <meta name="description" content="" />
   <link rel="icon" href="img/favicon.ico">
-  <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
   <style>
     /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
       html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
@@ -63,10 +62,11 @@
       --plum: #903092;
     }
     body {
-      font-family: 'Gotham Black', sans-serif;
+      font-family: 'Gotham', sans-serif;
       text-align: center;
     }
     h1 {
+      font-family: 'Gotham Black', sans-serif;
       margin-top: 1em;
       font-size: 4rem;
     }
@@ -74,7 +74,9 @@
       font-size: 2rem;
     }
     h3 {
+      font-family: 'Gotham Black', sans-serif;
       margin-top: 12rem;
+      display: inline-block;
       font-size: 8rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -128,16 +130,39 @@
       color: var(--orange);
       z-index: 50;
     }
+    .char:nth-child(12) {
+      color: var(--indigo);
+      z-index: 45;
+    }
+    .char:nth-child(13) {
+      color: var(--red);
+      z-index: 40;
+    }
+    .char:nth-child(14) {
+      color: var(--green);
+      z-index: 35;
+    }
+    .char:nth-child(15) {
+      color: var(--plum);
+      z-index: 30;
+    }
+    .char:nth-child(16) {
+      color: var(--orange);
+      z-index: 25;
+    }
     .logo {
       height: 14rem;
       margin-bottom: 6rem;
     }
-    .pajarito {
+    .bird {
       height: 7rem;
-      position: absolute;
-      margin-top: -2.5rem;
+      margin-bottom: 3rem;
       margin-left: -2rem;
-      z-index: 45;
+    }
+    .vivirsabroso {
+      font-family: 'Gotham Black', sans-serif;
+      font-size: 2rem;
+      color: var(--orange);
     }
   </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -151,30 +176,65 @@
 </head>
 <body>
   <h1>Pacto Sabroso</h1>
-  <h2>Genera tu nombre para vivir sabroso</h2>
+  <h2>Genera tu nombre para vivir sabroso.</h2>
   <p>(edita letra por letra😅)</p>
   <br>
 
   <hr>
-  <h3 contenteditable="true" data-splitting>
-    pontunombre
-    <img class="pajarito" src="img/pajarito.svg">
-  </h3>
-  <p style="font-size: 2rem; color: var(--orange);">QUIERE VIVIR SABROSO</p>
+  <h3 contenteditable="true">pontunombre</h3>
+  <img class="bird" src="img/pajarito.svg">
+  <p class="vivirsabroso">QUIERE VIVIR SABROSO</p>
 
   <img class="logo" src="img/pacto_historico_colombia_puede.svg">
   <hr>
   <br>
-  <h2>Luego toma un pantallazo y listo!</h2>
+  <h2>¡Luego toma un pantallazo y listo!</h2>
+  <br>
   <small>Hecho por <a href="https://twitter.com/danielgarcia_co">@danielgarcia_co</a>.</small>
+  <br>
   <small>Mira aquí el <a href="https://github.com/uxDaniel/pacto_sabroso">código fuente</a>.</small>
   <br>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
   <script>
-    $(document).ready(function() {
-      Splitting();
+    function ready(fn) {
+      if (document.readyState != 'loading'){
+        fn();
+      } else {
+        document.addEventListener('DOMContentLoaded', fn);
+      }
+    }
+    function split(str) {
+      let result = [];
+      for(let char of str.trim()) {
+        result.push(`<span class='char'>${char}</span>`);
+      }
+      return result.join('');
+    }
+    function placeCaretAtEnd(el) {
+      el.focus();
+      if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else if (typeof document.body.createTextRange != "undefined") {
+        var textRange = document.body.createTextRange();
+        textRange.moveToElementText(el);
+        textRange.collapse(false);
+        textRange.select();
+      }
+    }
+    ready(function(){
+      const target = document.querySelector('h3');
+      target.innerHTML = split(target.textContent);
+
+      document.addEventListener('input', function(e) {
+        let text = target.textContent;
+        target.innerHTML = split(target.textContent);
+        placeCaretAtEnd(target);
+      }, false);
     });
   </script>
 </body>
