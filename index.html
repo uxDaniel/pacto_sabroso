@@ -7,52 +7,20 @@
   <meta name="description" content="" />
   <link rel="icon" href="img/favicon.ico">
   <style>
-    /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
-      html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
-        margin: 0;
-        padding: 0;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        font-size: 100%;
-      }
-      ul {
-        list-style: none;
-      }
-      button, input, select {
-        margin: 0;
-      }
-      html {
-        box-sizing: border-box;
-      }
-      *, *::before, *::after {
-        box-sizing: inherit;
-      }
-      img, video {
-        height: auto;
-        max-width: 100%;
-      }
-      iframe {
-        border: 0;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-      td, th {
-        padding: 0;
-      }
+    /*! Based on minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+      * { margin: 0; padding: 0; }
+      h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+      ul { list-style: none; }
+      button, input, select { margin: 0; }
+      html { box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: inherit; }
+      img, video { height: auto; max-width: 100%; }
+      iframe { border: 0; }
+      table { border-collapse: collapse; border-spacing: 0; }
+      td, th { padding: 0; }
   </style>
   <style>
     @import url('https://fonts.cdnfonts.com/css/gotham');
-    /*
-      font-family: 'Gotham', sans-serif;
-      font-family: 'Gotham Black', sans-serif;
-      font-family: 'Gotham Light', sans-serif;
-      font-family: 'Gotham Thin', sans-serif;
-      font-family: 'Gotham XLight', sans-serif;
-      font-family: 'Gotham Book', sans-serif;
-      font-family: 'Gotham Ultra', sans-serif;
-    */
     :root {
       --orange: #faa61a;
       --indigo: #034ea2;
@@ -60,101 +28,37 @@
       --green: #34ab49;
       --plum: #903092;
     }
+
+    a { text-decoration: none; }
+    h3:focus { outline: none; }
+    h3::-moz-focus-inner {border:0;}
     body {
       font-family: 'Verdana', sans-serif;
       text-align: center;
+      color: #111;
     }
     h1 {
       font-family: 'Gotham Black', sans-serif;
-      margin-top: 1em;
+      margin-top: 1rem;
       font-size: 4rem;
     }
-    h2 {
-      font-size: 2rem;
-    }
+    h2 { font-size: 2rem; }
     h3 {
       font-family: 'Gotham Black', sans-serif;
-      margin-top: 12rem;
       display: inline-block;
       font-size: 8rem;
       text-transform: uppercase;
       letter-spacing: -0.15em;
     }
-    h3:focus {
-      outline: none;
-    }
     .char {
       mix-blend-mode: hard-light;
       position: relative;
     }
-    .char:nth-child(1) {
-      color: var(--orange);
-      z-index: 100;
-    }
-    .char:nth-child(2) {
-      color: var(--indigo);
-      z-index: 95;
-    }
-    .char:nth-child(3) {
-      color: var(--red);
-      z-index: 90;
-    }
-    .char:nth-child(4) {
-      color: var(--green);
-      z-index: 85;
-    }
-    .char:nth-child(5) {
-      color: var(--plum);
-      z-index: 80;
-    }
-    .char:nth-child(6) {
-      color: var(--orange);
-      z-index: 75;
-    }
-    .char:nth-child(7) {
-      color: var(--indigo);
-      z-index: 70;
-    }
-    .char:nth-child(8) {
-      color: var(--red);
-      z-index: 65;
-    }
-    .char:nth-child(9) {
-      color: var(--green);
-      z-index: 60;
-    }
-    .char:nth-child(10) {
-      color: var(--plum);
-      z-index: 55;
-    }
-    .char:nth-child(11) {
-      color: var(--orange);
-      z-index: 50;
-    }
-    .char:nth-child(12) {
-      color: var(--indigo);
-      z-index: 45;
-    }
-    .char:nth-child(13) {
-      color: var(--red);
-      z-index: 40;
-    }
-    .char:nth-child(14) {
-      color: var(--green);
-      z-index: 35;
-    }
-    .char:nth-child(15) {
-      color: var(--plum);
-      z-index: 30;
-    }
-    .char:nth-child(16) {
-      color: var(--orange);
-      z-index: 25;
-    }
-    .logo {
-      height: 14rem;
-      margin-bottom: 6rem;
-    }
+    .char:nth-child(5n+1) { color: var(--orange); z-index: calc(100); }
+    .char:nth-child(5n+2) { color: var(--indigo); z-index: calc(90); }
+    .char:nth-child(5n+3) { color: var(--red); z-index: calc(80); }
+    .char:nth-child(5n+4) { color: var(--green); z-index: calc(70); }
+    .char:nth-child(5n+5) { color: var(--plum); z-index: calc(60); }
     .bird {
       height: 7rem;
       margin-bottom: 3rem;
@@ -164,7 +68,11 @@
       font-family: 'Gotham Black', sans-serif;
       font-size: 2rem;
       color: var(--orange);
+      margin-bottom: 4rem;
     }
+    .logo { height: 6rem; }
+    hr.start { margin-bottom: 10rem; }
+    hr.end { margin-top: 10rem; }
   </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DSYQCQLY34"></script>
@@ -180,20 +88,18 @@
   <h2>Genera tu nombre para vivir sabroso.</h2>
   <br>
 
-  <hr>
-  <h3 contenteditable="true">pontunombre</h3>
+  <hr class="start">
+  <h3 contenteditable="true" spellcheck="false">TUNOMBRE</h3>
   <img class="bird" src="img/pajarito.svg">
   <p class="vivirsabroso">QUIERE VIVIR SABROSO</p>
 
-  <img class="logo" src="img/pacto_historico_colombia_puede.svg">
-  <hr>
-  <br>
-  <h2>¡Luego toma un pantallazo y listo!</h2>
-  <br>
-  <small>Hecho por <a href="https://twitter.com/danielgarcia_co">@danielgarcia_co</a>.</small>
-  <br>
-  <small>Mira aquí el <a href="https://github.com/uxDaniel/pacto_sabroso">código fuente</a>.</small>
-  <br>
+  <img class="logo" src="img/logo_pacto_historico.svg">
+
+  <hr class="end">
+  <br><h2>¡Luego toma un pantallazo y listo!</h2>
+  <br><small>Hecho por <a href="https://twitter.com/danielgarcia_co">@danielgarcia_co</a>.</small>
+  <br><small>Mira aquí el <a href="https://github.com/uxDaniel/pacto_sabroso">código fuente</a>.</small>
+  <br><br>
 
   <script>
     function ready(fn) {
@@ -205,8 +111,9 @@
     }
     function split(str) {
       let result = [];
-      for(let char of str.trimStart()) {
-        result.push(`<span class='char'>${char}</span>`);
+      str = str.trimStart();
+      for (var i = 0; i < str.length; i++) {
+        result.push(`<span class='char' style='z-index: 100-${i}'>${str[i]}</span>`);
       }
       return result.join('');
     }
