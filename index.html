@@ -20,7 +20,13 @@
       td, th { padding: 0; }
   </style>
   <style>
-    @import url('https://fonts.cdnfonts.com/css/gotham');
+    @font-face {
+      font-family: 'Gotham Black';
+      font-style: normal;
+      font-weight: 500;
+      src: local('Gotham Black'), url('https://fonts.cdnfonts.com/s/14898/Gotham-Black.woff') format('woff');
+      font-display: swap;
+    }
     :root {
       --orange: #faa61a;
       --indigo: #034ea2;
@@ -37,15 +43,17 @@
       text-align: center;
       color: #111;
     }
+    h1, h3 {
+      font-family: 'Gotham Black', 'Arial Black', sans-serif;
+      font-weight: 900;
+      display: inline-block;
+    }
     h1 {
-      font-family: 'Gotham Black', sans-serif;
       margin-top: 1rem;
       font-size: 4rem;
     }
     h2 { font-size: 2rem; }
     h3 {
-      font-family: 'Gotham Black', sans-serif;
-      display: inline-block;
       font-size: 8rem;
       text-transform: uppercase;
       letter-spacing: -0.15em;
@@ -102,13 +110,6 @@
   <br><br>
 
   <script>
-    function ready(fn) {
-      if (document.readyState != 'loading'){
-        fn();
-      } else {
-        document.addEventListener('DOMContentLoaded', fn);
-      }
-    }
     function split(str) {
       let result = [];
       str = str.trimStart();
@@ -133,16 +134,14 @@
         textRange.select();
       }
     }
-    ready(function(){
-      const target = document.querySelector('h3');
+    
+    const target = document.querySelector('h3');
+    target.innerHTML = split(target.textContent);
+    target.addEventListener('input', function(e) {
+      let text = target.textContent;
       target.innerHTML = split(target.textContent);
-
-      document.addEventListener('input', function(e) {
-        let text = target.textContent;
-        target.innerHTML = split(target.textContent);
-        placeCaretAtEnd(target);
-      }, false);
-    });
+      placeCaretAtEnd(target);
+    }, false);
   </script>
 </body>
 </html>
