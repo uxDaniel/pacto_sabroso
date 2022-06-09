@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <title>Pacto Sabroso - Generador por Daniel Garcia</title>
   <meta charset="UTF-8" />
@@ -30,7 +30,7 @@
     :root {
       --orange: #faa61a;
       --indigo: #034ea2;
-      --red: #ee2524;
+      --red: #ee2524ee;
       --green: #34ab49;
       --plum: #903092;
     }
@@ -79,8 +79,8 @@
       margin-bottom: 4rem;
     }
     .logo { height: 6rem; }
-    hr.start { margin-bottom: 10rem; }
-    hr.end { margin-top: 10rem; }
+    hr.start { margin-top: 1rem; margin-bottom: 10rem; }
+    hr.end { margin-top: 10rem; margin-bottom: 1rem; }
   </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DSYQCQLY34"></script>
@@ -94,30 +94,20 @@
 <body>
   <h1>Pacto Sabroso</h1>
   <h2>Genera tu nombre para vivir sabroso.</h2>
-  <br>
 
   <hr class="start">
-  <h3 contenteditable="true" spellcheck="false">TUNOMBRE</h3>
+  <h3 contenteditable="true" spellcheck="false"></h3>
   <img class="bird" alt="Pajarito Logo Pacto Histórico" src="img/pajarito.svg">
   <p class="vivirsabroso">QUIERE VIVIR SABROSO</p>
-
   <img class="logo" alt="Logo Pacto Histórico" src="img/logo_pacto_historico.svg">
-
   <hr class="end">
-  <br><h2>¡Luego toma un pantallazo y listo!</h2>
-  <br><small>Hecho por <a href="https://twitter.com/danielgarcia_co">@danielgarcia_co</a>.</small>
-  <br><small>Mira aquí el <a href="https://github.com/uxDaniel/pacto_sabroso">código fuente</a>.</small>
-  <br><br>
+
+  <h2>¡Luego toma un pantallazo y listo!</h2><br>
+  <small>Hecho por <a href="https://twitter.com/danielgarcia_co">@danielgarcia_co</a>.</small><br>
+  <small>Mira aquí el <a href="https://github.com/uxDaniel/pacto_sabroso">código fuente</a>.</small><br><br>
 
   <script>
-    function split(str) {
-      let result = [];
-      str = str.trimStart();
-      for (var i = 0; i < str.length; i++) {
-        result.push(`<span class='char' style='z-index: 100-${i}'>${str[i]}</span>`);
-      }
-      return result.join('');
-    }
+    // From https://stackoverflow.com/a/4238971/259824
     function placeCaretAtEnd(el) {
       el.focus();
       if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
@@ -134,14 +124,43 @@
         textRange.select();
       }
     }
-    
-    const target = document.querySelector('h3');
-    target.innerHTML = split(target.textContent);
-    target.addEventListener('input', function(e) {
-      let text = target.textContent;
-      target.innerHTML = split(target.textContent);
-      placeCaretAtEnd(target);
-    }, false);
+
+    // Pacto Sabroso
+    function split(str) {
+      let result = [];
+      str = str.trimStart();
+      for (var i = 0; i < str.length; i++) {
+        result.push(`<span class='char' style='z-index: ${100-i}'>${str[i]}</span>`);
+      }
+      return result.join('');
+    }
+    function colorize(e){
+      const text = this.textContent;
+      this.innerHTML = split(this.textContent);
+      placeCaretAtEnd(this);
+    }
+    function cleanup(e) {
+      const text = this.textContent;
+      if (text == 'TUNOMBRE') {
+        this.innerHTML = '';
+        placeCaretAtEnd(this);
+      }
+    }
+    function initialize(e){
+      const target = e ? this : document.querySelector('h3');;
+      const text = target.textContent;
+      if (text === '') {
+        target.innerHTML = split('TUNOMBRE');
+      }
+    }
+    function main(){
+      const target = document.querySelector('h3');
+      target.addEventListener('input', colorize, false);
+      target.addEventListener('focusin', cleanup, false);
+      target.addEventListener('focusout', initialize, false);
+      initialize();
+    }
+    main();
   </script>
 </body>
 </html>
